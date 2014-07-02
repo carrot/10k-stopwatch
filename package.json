@@ -1,7 +1,7 @@
 {
   "name": "10k-stopwatch",
-  "description": "",
-  "version": "",
+  "description": "A stopwatch extension for app.10000ft.com",
+  "version": "1.0.0",
   "dependencies": {
     "coffee-script": "^1.7.1"
   }
