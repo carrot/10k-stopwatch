@@ -1,0 +1,9 @@
+{
+  "name": "10k-stopwatch",
+  "description": "",
+  "version": "",
+  "dependencies": {
+    "coffee-script": "^1.7.1",
+    "stylus": "^0.47.1"
+  }
+}
