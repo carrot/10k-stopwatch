@@ -1,28 +1,52 @@
-#stopwatch label {
-  visability: hidden;
+.stopwatch {
+  position: absolute;
+  left: 372px;
+  width: 100px;
+  height: 30px;
+  background-color: #00d287;
+  border-radius: 4px;
+  text-align: center;
+  font-family: GibsonRegular;
+  font-size: 12px;
 }
 
-#stopwatch input {
-  visability: hidden;
+.stopwatch:hover {
+  background-color: #00e593;
+  cursor: pointer;
+}
+
+.stopwatch label {
+  color: #fff;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.stopwatch.active-btn {
+  background-color: #d2004b;
+}
+
+.stopwatch.active-btn:hover {
+  background-color: #ff2171;
 }
 
 /*
-  Hack to detect node insertion
-  credit to: David Welsh (http://davidwalsh.name/detect-node-insertion)
+  non-btn overides
 */
-#mainCon > .popupContainer {
-  -webkit-animation-name: nodeInserted;
-  -webkit-animation-duration: 0.001s;
-  animation-name: nodeInserted;
-  animation-duration: 0.001s;
+#mainCon .popupContainer {
+  width: 540px !important;
 }
 
-@keyframes -webkit-nodeInserted {
-  from { opacity: 0.99; }
-  to { opactiy: 1; }
+#mainCon .popupContainer .cancelButtonNotification {
+  left: 107px !important;
+  cursor: pointer !important;
 }
 
-@keyframes nodeInserted {
-  from { opacity: 0.99; }
-  to { opactiy: 1; }
+#mainCon .popupContainer div.timeEntryImage1 {
+  overflow: visible;
+}
+
+#mainCon .popupContainer div.timeEntryImage1 div {
+  width: 473px !important;
+  border-bottom: 1px solid #d3d3d3;
+  background: none;
 }
