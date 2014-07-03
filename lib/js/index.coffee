@@ -10,7 +10,6 @@ insertListener = (event) ->
     i += 1
 
     parent = $(event.target).parent()
-    console.log parent
 
     $(event.target).children('input')
       .attr('data-id', "#{i}")
@@ -54,14 +53,27 @@ start = (parent, ele) ->
 stop = (ele) ->
   window.clearTimeout(activeTimeoutid)
   activeTimeoutid = null
-  $(ele).removeClass('active-btn')
-  $(ele).children('label').text('Start Timer')
+
+  unless ele is null
+    $(ele).removeClass('active-btn')
+    $(ele).children('label').text('Start Timer')
 
 
 # Listen for DOM insert
 document.addEventListener('DOMNodeInserted', insertListener)
 
-document.addEventListener('visibilitychange', () ->
-    if parent.hidden
-      stop($(@).find(".stopwatch"))
+$('body').click( (event) ->
+
+  target = $(event.target)
+
+  if not target.hasClass('popupContainer') and not target.parent('.popupContainer')
+    stop(null)
+
+  if target.parent('.popupContainer') is null
+    stop(null)
+
+  if target.hasClass('cancelButtonNotification')
+    stop(null)
+
+  false
 )
