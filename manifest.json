@@ -1,16 +1,16 @@
 {
     "manifest_version": 2,
     "version": "1.0.0",
-    "default_locale": "en",
-    
+
     "name": "10k-stopwatch",
     "description": "A stopwatch extension for app.10000ft.com",
-    "homepage_url": "carrot.is",
-    
-	"content_scripts": [ {
-      "matches": ["https://app.10000ft.com/*"],
+    "homepage_url": "http://carrot.is/",
+    "author": "Carrot Devs (dev@carrotcreative.com)",
+
+	  "content_scripts": [ {
+      "matches": ["*://app.10000ft.com/*"],
       "js": ["src/js/index.js"],
       "css": ["src/css/index.css"],
       "run_at": "document_idle"
-   } ]
+    } ]
 }

@@ -3,6 +3,7 @@
   "description": "A stopwatch extension for app.10000ft.com",
   "version": "1.0.0",
   "dependencies": {
+    "clean-css": "^2.2.5",
     "coffee-script": "^1.7.1"
   }
 }
