@@ -1,0 +1,28 @@
+#stopwatch label {
+  visability: hidden;
+}
+
+#stopwatch input {
+  visability: hidden;
+}
+
+/*
+  Hack to detect node insertion
+  credit to: David Welsh (http://davidwalsh.name/detect-node-insertion)
+*/
+#mainCon > .popupContainer {
+  -webkit-animation-name: nodeInserted;
+  -webkit-animation-duration: 0.001s;
+  animation-name: nodeInserted;
+  animation-duration: 0.001s;
+}
+
+@keyframes -webkit-nodeInserted {
+  from { opacity: 0.99; }
+  to { opactiy: 1; }
+}
+
+@keyframes nodeInserted {
+  from { opacity: 0.99; }
+  to { opactiy: 1; }
+}
