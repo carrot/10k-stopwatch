@@ -45,7 +45,7 @@ timer = (parent) ->
       # round new value to hundredths
       newValue = Math.round(100 * (+input.val() + .01)) / 100 
       input.val(newValue)
-    , 360
+    , 36000
   )
 
 #This function starts the timer on an element
