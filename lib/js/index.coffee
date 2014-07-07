@@ -1,62 +1,63 @@
-
-i = 0
-activeTimeoutid = null
+current_data_id = 0
+active_timeout_id = null
 parent = null
 
 # insert button function
 insertListener = (event) ->
   if $(event.target).hasClass("personPageEditInputContainerTiny")
-    i += 1
+    current_data_id += 1
 
     parent = $(event.target).parent()
 
     $(event.target).children('input')
-      .attr('data-id', "#{i}")
+      .attr('data-id', "#{current_data_id}")
 
+    #Appending our stopwatch button
     parent.append(
       """
-      <div class="stopwatch" data-id="#{i}">
+      <div class="stopwatch" data-id="#{current_data_id}">
       <label for="stopwatch-button">Start Timer</label>
       <input id="stopwatch-button" type="checkbox" style="display: none;">
       </div>
       """
     )
 
+    #Applying onClick to the stopwatch button
     parent.find(".stopwatch").click( () ->
 
+      #If it's active, stop it
       if $(@).hasClass('active-btn')
-        console.log "Stop"
         stop(@)
 
+      #If it's not active, start it (given that nothing else is running)
       else
-        if activeTimeoutid is null
-          console.log "start"
+        if active_timeout_id is null
           start($(@).parent(), @)
 
-      false
+      false #Consuming the onClick
     )
 
-timer = (ele) ->
-  input = ele.find('input.personPageInputTiny')
-  activeTimeoutid = window.setInterval(
+#This function starts to update an input, given a parent
+timer = (parent) ->
+  input = parent.find('input.personPageInputTiny')
+  active_timeout_id = window.setInterval(
     () ->
-
-
-      newValue = Math.round(100 * (+input.val() + .01)) / 100 # round X to hundredths
-
-      #input.val(+input.val() + .01)
+      # round new value to hundredths
+      newValue = Math.round(100 * (+input.val() + .01)) / 100 
       input.val(newValue)
-    , 600
+    , 360
   )
 
+#This function starts the timer on an element
 start = (parent, ele) ->
   timer(parent)
   $(ele).addClass('active-btn')
   $(ele).children('label').text('Stop Timer')
 
+#This function stops the timer on an element
 stop = (ele) ->
-  window.clearTimeout(activeTimeoutid)
-  activeTimeoutid = null
+  window.clearTimeout(active_timeout_id)
+  active_timeout_id = null
 
   unless ele is null
     $(ele).removeClass('active-btn')
@@ -66,6 +67,7 @@ stop = (ele) ->
 # Listen for DOM insert
 document.addEventListener('DOMNodeInserted', insertListener)
 
+#Listening to onClicks to disable the timer when modal is closed
 $('body').click( (event) ->
 
   target = $(event.target)
@@ -79,5 +81,5 @@ $('body').click( (event) ->
   if target.hasClass('cancelButtonNotification')
     stop(null)
 
-  false
+  false #Consuming the onClick
 )
