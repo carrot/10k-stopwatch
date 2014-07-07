@@ -1,8 +1,7 @@
 
-console.log "The wind is silent in the dom..."
 i = 0
 activeTimeoutid = null
-parent = ""
+parent = null
 
 # insert button function
 insertListener = (event) ->
@@ -41,8 +40,13 @@ timer = (ele) ->
   input = ele.find('input.personPageInputTiny')
   activeTimeoutid = window.setInterval(
     () ->
-      input.val(+input.val() + .01)
-    , 5
+
+
+      newValue = Math.round(100 * (+input.val() + .01)) / 100 # round X to hundredths
+
+      #input.val(+input.val() + .01)
+      input.val(newValue)
+    , 600
   )
 
 start = (parent, ele) ->
@@ -66,12 +70,12 @@ $('body').click( (event) ->
 
   target = $(event.target)
 
-  if not target.hasClass('popupContainer') and not target.parent('.popupContainer')
+  # If what we clicked is not a child of a popup container, 
+  # and isn't the popup container itself
+  if not target.parents('div.popupContainer').length and not target.hasClass('popupContainer')
     stop(null)
 
-  if target.parent('.popupContainer') is null
-    stop(null)
-
+  #If the user presses the X button
   if target.hasClass('cancelButtonNotification')
     stop(null)
 
