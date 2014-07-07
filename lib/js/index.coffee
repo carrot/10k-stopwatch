@@ -1,5 +1,6 @@
 current_data_id = 0
 active_timeout_id = null
+active_input = null;
 parent = null
 
 # insert button function
@@ -39,12 +40,16 @@ insertListener = (event) ->
 
 #This function starts to update an input, given a parent
 timer = (parent) ->
-  input = parent.find('input.personPageInputTiny')
+  active_input = parent.find('input.personPageInputTiny')
   active_timeout_id = window.setInterval(
     () ->
       # round new value to hundredths
-      newValue = Math.round(100 * (+input.val() + .01)) / 100 
-      input.val(newValue)
+      newValue = Math.round(100 * (+active_input.val() + .01)) / 100 
+      active_input.val(newValue)
+      
+      #Forcing an update
+      active_input.focus()
+      active_input.blur()
     , 36000
   )
 
@@ -63,6 +68,11 @@ stop = (ele) ->
     $(ele).removeClass('active-btn')
     $(ele).children('label').text('Start Timer')
 
+  #Forcing 10k to update
+  if active_input isnt null
+    active_input.focus()
+    active_input.blur()
+    active_input = null
 
 # Listen for DOM insert
 document.addEventListener('DOMNodeInserted', insertListener)
@@ -79,6 +89,11 @@ $('body').click( (event) ->
 
   #If the user presses the X button
   if target.hasClass('cancelButtonNotification')
+    stop(null)
+
+  #If user clicked add line item
+  if target.hasClass('timeEntryAddLineContainer') or target.parents('.timeEntryAddLineContainer')
+    event.stopPropagation()
     stop(null)
 
   false #Consuming the onClick
