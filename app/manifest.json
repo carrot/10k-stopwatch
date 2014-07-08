@@ -9,8 +9,8 @@
 
 	  "content_scripts": [ {
       "matches": ["*://app.10000ft.com/*"],
-      "js": ["js/jquery.min.js", "js/index.js"],
-      "css": ["css/index.css"],
+      "js": ["src/js/jquery.min.js", "src/js/index.js"],
+      "css": ["src/css/index.css"],
       "run_at": "document_idle"
     } ]
 }
