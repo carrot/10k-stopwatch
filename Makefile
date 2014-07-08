@@ -8,17 +8,16 @@ build:
 	fi
 
 	@echo "building..."
-	@rm -fr src; cp -r lib src
-	@coffee -c src/js/index.coffee
-	@rm src/js/index.coffee
-	@uglifyjs src/js/index.js --screw-ie8 -o src/js/index.js
-	@cleancss src/css/index.css -o src/css/index.css
-	@cp manifest.json src/manifest.json
+	@rm -fr app/src; cp -r lib app/src
+	@coffee -c app/src/js/index.coffee
+	@rm app/src/js/index.coffee
+	@uglifyjs app/src/js/index.js --screw-ie8 -o app/src/js/index.js
+	@cleancss app/src/css/index.css -o app/src/css/index.css
 	@echo "done!"
 
 clean:
 	@echo "cleaning up your mess..."
-	rm -fr src
+	rm -fr app/src
 	@echo "done!"
 
 .PHONY: clean
