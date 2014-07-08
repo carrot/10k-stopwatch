@@ -2,6 +2,8 @@ build:
 	@if [ ! -d "node_modules" ]; then \
 		echo "installing dependencies..."; \
 		npm install; \
+		npm install uglify-js -g; \
+		npm install clean-css -g; \
 		echo ""; \
 	fi
 
