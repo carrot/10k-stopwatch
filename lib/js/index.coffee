@@ -16,7 +16,7 @@ insertListener = (event) ->
     $(event.target).children('input')
       .attr('data-id', "#{current_data_id}")
 
-    #Appending our stopwatch button
+    # Appending our stopwatch button
     parent.append(
       """
       <div class="stopwatch" data-id="#{current_data_id}">
@@ -38,7 +38,7 @@ insertListener = (event) ->
         if active_timeout_id is null
           start($(@).parent(), @)
 
-      false #Consuming the onClick
+      false # Consuming the onClick
     )
 
 ###*
@@ -105,14 +105,14 @@ $('body').click( (event) ->
   if not target.parents('div.popupContainer').length and not target.hasClass('popupContainer')
     stop(null)
 
-  #If the user presses the X button
+  # If the user presses the X button
   if target.hasClass('cancelButtonNotification')
     stop(null)
 
-  #If user clicked add line item
+  # If user clicked add line item
   if target.hasClass('timeEntryAddLineContainer') or (target.parents('.timeEntryAddLineContainer').length > 0)
     event.stopPropagation()
     stop(null)
 
-  false #Consuming the onClick
+  false # Consuming the onClick
 )
