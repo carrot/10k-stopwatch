@@ -51,7 +51,20 @@ timer = (parent) ->
   active_timeout_id = window.setInterval(
     () ->
       # round new value to hundredths
-      newValue = Math.round(100 * (+active_input.val() + .01)) / 100
+      active_input_val = active_input.val()
+
+      # if input has a colon, convert to decimal
+      if active_input_val.indexOf(":") > -1
+        console.log(active_input_val.indexOf(":"))
+        hours = active_input_val.substring(0, active_input_val.indexOf(":"))
+        minutes = active_input_val.substring(active_input_val.indexOf(":") + 1)
+        decimal_minutes = Math.round(100 * (minutes / 60)) / 100
+
+        newValue = ((+hours + +decimal_minutes) + .01)
+
+      else
+        newValue = Math.round(100 * (+active_input.val() + .01)) / 100
+
       active_input.val(newValue)
 
       # Forcing an update
@@ -64,7 +77,7 @@ timer = (parent) ->
 
 ###*
  * This function starts the timer on an element
- * @param  {[type]} parent current parent of timer
+ * @param  {jQuery Object} parent current parent of timer
  * @param  {jQuery Object} ele    element to start updating
  * @return
 ###
