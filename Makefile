@@ -11,7 +11,7 @@ build:
 	@rm -fr app/src; cp -r lib app/src
 	@coffee -c app/src/js/index.coffee
 	@rm app/src/js/index.coffee
-	@uglifyjs app/src/js/index.js --screw-ie8 -o app/src/js/index.js
+	@uglifyjs app/src/js/index.js --screw-ie8 -m -o app/src/js/index.js
 	@cleancss app/src/css/index.css -o app/src/css/index.css
 	@echo "done!"
 
