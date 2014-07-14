@@ -25,4 +25,4 @@ To update, simply update the coffeescript/css, and re run `make`.
 
 Go back to `chrome://extensions/` in Google Chrome, and click the hyperlink `Reload (⌘R)` at the bottom of the 10k-stopwatch extension, or simply press ⌘R on a Mac.  
 
-Go to `https://app.10000ft.com/` to see your changes.(app.10000ft.com/` to see your changes)
+Go to [app.10000ft.com/](https://app.10000ft.com/) to see your changes.
