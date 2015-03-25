@@ -108,14 +108,16 @@ stop = (ele) ->
 # Listen for DOM insert
 document.addEventListener('DOMNodeInserted', insertListener)
 
-# Listening to onClicks to disable the timer when modal is closed
+# Listening to onClicks to disable the timer when model is closed
 $('body').click( (event) ->
 
   target = $(event.target)
 
   # If what we clicked is not a child of a popup container,
   # and isn't the popup container itself
-  if not target.parents('div.popupContainer').length and not target.hasClass('popupContainer')
+  if not target.parents('div.popupContainer').length and not
+      target.hasClass('popupContainer')
+
     stop(null)
 
   # If the user presses the X button
@@ -123,7 +125,9 @@ $('body').click( (event) ->
     stop(null)
 
   # If user clicked add line item
-  if target.hasClass('timeEntryAddLineContainer') or (target.parents('.timeEntryAddLineContainer').length > 0)
+  if target.hasClass('timeEntryAddLineContainer') or
+      (target.parents('.timeEntryAddLineContainer').length > 0)
+
     event.stopPropagation()
     stop(null)
 
