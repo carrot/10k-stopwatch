@@ -1,10 +1,25 @@
 {
   "name": "10k-stopwatch",
   "description": "A stopwatch extension for app.10000ft.com",
-  "version": "1.0.0",
-  "dependencies": {
-    "clean-css": "^2.2.5",
-    "coffee-script": "^1.7.1",
-    "uglify-js": "^2.4.14"
-  }
+  "version": "2.0.0",
+  "devDependencies": {
+    "babel": "latest",
+    "clean-css": "latest",
+    "uglify-js": "latest"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carrot/10k-stopwatch.git"
+  },
+  "keywords": [
+    "10000ft",
+    "stopwatch"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carrot/10k-stopwatch/issues"
+  },
+  "homepage": "https://github.com/carrot/10k-stopwatch#readme",
+  "private": true
 }

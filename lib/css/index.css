@@ -1,8 +1,8 @@
 .stopwatch {
   position: absolute;
-  left: 372px;
   width: 100px;
   height: 30px;
+  transform: translate(-115%, 215%);
   background-color: #00d287;
   border-radius: 4px;
   text-align: center;
